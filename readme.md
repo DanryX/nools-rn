@@ -626,10 +626,10 @@ flow
     .focus("ag2")
     .focus("ag1")
     .on("fire", function (ruleName) {
-        fired2.push(ruleName);
+        fired3.push(ruleName);
     })
     .match(function () {
-        console.log("Example 2", fired2); //[ 'Hello World2', 'Hello World' ]
+        console.log("Example 2", fired2); //[ 'Hello World', 'Hello World2' ]
     });
 ```
 
@@ -776,7 +776,7 @@ When declaring a flow it is defined with a default conflict resolution strategy.
 
 The default conflict resolution strategy consists of `salience` and `activationRecency`.
 
-### Examples
+###Examples
 
 **Example 1**
 
@@ -815,7 +815,7 @@ In the above example activation 2 would be fired since it is the most recent act
 ```
 In this example activation 1 would fire because it has a greater salience
 
-### Overidding The Default Strategy
+###Overidding The Default Strategy
 
 To override the default strategy you can use the `conflictResolution` method on a flow.
 
@@ -886,7 +886,7 @@ In Example 2 activation 2 would fire because of the third recency entry.
 
 //activation 2
 {
-    salience: 2,
+    salience: 1,
     factRecency: [1,2,3],
     activationRecency: 2
 }
@@ -1133,14 +1133,12 @@ when {
       * Custom - any custom type that you define
    2. Alias - the name the object should be represented as.
    3. Pattern(optional) - The pattern that should evaluate to a boolean, the alias that was used should be used to reference the object in the pattern. Strings should be in single quotes, regular expressions are allowed. Any previously defined alias/reference can be used within the pattern. Available operators are.
-      * Not supported: bitwize operators `& | << >> >>> ^ ~`
       * `&&`, `AND`, `and`
       * `||`, `OR`, `or`
       * `>`, `<`, `>=`, `<=`, `gt`, `lt`, `gte`, `lte`
       * `==`, `===`, `!=`, `!==`, `=~`, `!=~`, `eq`, `seq`, `neq`, `sneq`, `like`, `notLike`
       * `+`, `-`, `*`, `/`, `%`
       * `-` (unary minus)
-      * `^` (pow operator)
       * `.` (member operator)
       * `in` (check inclusion in an array)
       * `notIn` (check that something is not in an array)
@@ -1416,7 +1414,7 @@ rule "my rule", {
 
 <a name="exists-constraint"></a>
 
-### Exists Constraint
+###Exists Constraint
 
 `exists` is the logical inversion of a `not` constraint. It checks for the existence of a fact in memory.
 
